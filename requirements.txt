@@ -1,0 +1,10 @@
+dash==2.8.0
+pandas==2.0.2
+plotly==5.11.0
+statsmodels==0.13.5
+numpy>=1.24  # Pandas y statsmodels dependen de NumPy
+scipy>=1.10  # Statsmodels también necesita SciPy
+
+
+
+
