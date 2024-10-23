@@ -11,8 +11,23 @@ from statsmodels.tsa.stattools import adfuller, acf, pacf  # Importar acf y pacf
 # Inicializamos la app Dash
 app = dash.Dash(__name__)
 
-# Cargar el DataFrame
-dftra = pd.read_csv("/Users/juansebastianquintanacontreras/Desktop/Entrega#2_avance_PF/26-09-2022.txt", sep=",", header=0)
+files = [
+    "/Users/juansebastianquintanacontreras/Desktop/Entrega#2_avance_PF/archivo_parte_1.csv",
+    "/Users/juansebastianquintanacontreras/Desktop/Entrega#2_avance_PF/archivo_parte_2.csv",
+    "/Users/juansebastianquintanacontreras/Desktop/Entrega#2_avance_PF/archivo_parte_3.csv"
+]
+
+# Inicializa una lista para almacenar DataFrames
+dfs = []
+
+# Leer cada archivo y añadirlo a la lista
+for file in files:
+    df_temp = pd.read_csv(file, sep=",", header=0)
+    dfs.append(df_temp)
+
+# Concatenar todos los DataFrames en uno solo
+dftra = pd.concat(dfs, ignore_index=True)
+
 
 # Limpiar espacios en los nombres de las columnas
 dftra.columns = dftra.columns.str.strip()
